@@ -1,0 +1,37 @@
+name: Build PASPAS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+        allow-prerelease: true
+
+    - name: Publish
+      run: dotnet publish PASPAS.csproj -c Release -r win-x64 -p:PublishSingleFile=true -p:SelfContained=true -p:PublishTrimmed=false --output ./publish
+
+    - name: Portable zip
+      run: Compress-Archive -Path ./publish/PASPAS.exe -DestinationPath ./PASPAS-2.0.1.1-win-x64-portable.zip
+
+    - name: Install Inno Setup
+      run: choco install innosetup -y --no-progress
+
+    - name: Create installer
+      run: iscc installer.iss /DMyArch=win-x64 /DMyVersion=2.0.1.1
+
+    - name: Upload files
+      uses: actions/upload-artifact@v4
+      with:
+        name: PASPAS-win-x64
+        path: |
+          ./PASPAS-2.0.1.1-win-x64-portable.zip
+          ./PASPAS-2.0.1.1-Setup-win-x64.exe
