@@ -1,0 +1,148 @@
+diff -ruN --strip-trailing-cr orig/PASPAS-master/Globals.cs PASPAS-master/Globals.cs
+--- orig/PASPAS-master/Globals.cs	2026-07-16 10:15:20.000000000 +0000
++++ PASPAS-master/Globals.cs	2026-10-21 09:27:40.519216897 +0000
+@@ -9,6 +9,9 @@
+     {
+         public static string Current { get; set; } = "en";
+ 
++        // Ordre = ordre des éléments du sélecteur de langue (Main.Designer.cs)
++        public static readonly string[] Codes = { "en", "tr", "fr" };
++
+         private static readonly Dictionary<string, Dictionary<string, string>> Translations = new(StringComparer.OrdinalIgnoreCase)
+         {
+             ["en"] = new(StringComparer.OrdinalIgnoreCase)
+@@ -188,6 +191,95 @@
+                 ["Msg_TelemetryFail"] = "Telemetri devre dışı bırakılamadı.",
+                 ["Msg_ActivitySuccess"] = "Etkinlik geçmişi devre dışı bırakıldı.",
+                 ["Msg_ActivityFail"] = "Etkinlik geçmişi devre dışı bırakılamadı."
++            },
++            ["fr"] = new(StringComparer.OrdinalIgnoreCase)
++            {
++                ["Menu_Home"] = "Accueil",
++                ["Menu_Options"] = "Paramètres",
++                ["Menu_Tweaks"] = "Système",
++                ["Menu_Registry"] = "Registre",
++                ["Menu_Uninstall"] = "Programmes",
++                ["Menu_About"] = "À propos",
++
++                ["Registry_Disclaimer"] = "La modification du registre peut affecter la stabilité du système. Les éléments supprimés ne peuvent pas être restaurés. Procédez avec prudence.",
++                ["Button_ScanSelected"] = "Scanner la sélection",
++                ["Button_ScanAll"] = "Tout scanner",
++                ["Button_Delete"] = "Supprimer la sélection",
++                ["Button_SelectAll"] = "Tout sélectionner",
++                ["Button_Run"] = "Exécuter",
++                ["Button_Analyze"] = "Analyser",
++                ["Button_Finish"] = "Terminer",
++                ["Button_Stop"] = "ARRÊTER",
++                ["Button_Apply"] = "Appliquer",
++                ["Button_Refresh"] = "Actualiser",
++                ["Button_Uninstall"] = "Désinstaller",
++                ["Button_DarkMode"] = "Mode sombre",
++                ["Button_LightMode"] = "Mode clair",
++                ["Button_Reset"] = "Réinit.",
++
++                ["Status_Ready"] = "Prêt",
++                ["Status_Cleaning"] = "Nettoyage en cours...",
++                ["Status_Analyzing"] = "Analyse en cours...",
++                ["Status_Completed"] = "Terminé",
++                ["Status_Stopped"] = "Arrêté",
++                ["Status_Loading"] = "Chargement...",
++                ["Label_StatsSubtext"] = "Éléments / Rejetés / Erreurs",
++
++                ["Tweaks_Disclaimer"] = "Vous êtes responsable de tout dommage ou dysfonctionnement pouvant survenir sur votre appareil.",
++                ["Programs_Risk"] = "Vous êtes responsable des logiciels désinstallés. Veillez à ne pas désinstaller de pilotes système critiques.",
++
++                ["About_EcoTitle"] = "L'écosystème de Berkay Gediz",
++                ["About_EcoSub"] = "Un écosystème véritablement transparent et entièrement open source.",
++
++                ["Home_Basic_Title"] = "Basique",
++                ["Home_Basic_Desc"] = "Efface le presse-papiers, les fichiers temporaires, les installations téléchargées, les éléments récents, le cache des aperçus, le cache DNS et les journaux système.",
++                ["Home_Advanced_Title"] = "Avancé",
++                ["Home_Advanced_Desc"] = "Inclut le mode Basique. Ajoute le cache système, les vidages mémoire (plantages/minidumps), les données Prefetch, le cache des polices et le cache de téléchargement.",
++                ["Home_Custom_Title"] = "Personnalisé",
++                ["Home_Custom_Desc"] = "Inclut le mode Avancé. Ajoute les anciennes installations de Windows, les rapports d'erreurs et les journaux système détaillés. À configurer dans les Paramètres.",
++
++                ["Options_Clipboard_Title"] = "Vider le presse-papiers",
++                ["Options_Clipboard_Desc"] = "Vide le contenu actuel du presse-papiers système afin d'éviter les fuites de données sensibles.",
++                ["Options_TempFiles_Title"] = "Fichiers temporaires",
++                ["Options_TempFiles_Desc"] = "Supprime les fichiers temporaires créés par Windows et les applications tierces dans les répertoires utilisateur et système.",
++                ["Options_DownloadedInst_Title"] = "Installations téléchargées",
++                ["Options_DownloadedInst_Desc"] = "Supprime les packages d'installation mis en cache dans le profil utilisateur, ce qui libère de l'espace disque.",
++                ["Options_Recent_Title"] = "Fichiers récemment utilisés",
++                ["Options_Recent_Desc"] = "Efface les listes de raccourcis et l'historique des documents récents du menu Démarrer et de la barre des tâches.",
++                ["Options_Preview_Title"] = "Cache des aperçus",
++                ["Options_Preview_Desc"] = "Réinitialise les caches des miniatures et des icônes, ce qui corrige les aperçus de fichiers incorrects dans l'Explorateur de fichiers.",
++                ["Options_DNS_Title"] = "Vider le cache DNS",
++                ["Options_DNS_Desc"] = "Vide le cache du résolveur DNS pour résoudre les problèmes de connectivité réseau et de chargement des sites web.",
++                ["Options_Logs_Title"] = "Journaux système",
++                ["Options_Logs_Desc"] = "Supprime les journaux de Windows Update et les journaux d'activité WMI pour libérer un peu d'espace disque.",
++                ["Options_SysCache_Title"] = "Cache système",
++                ["Options_SysCache_Desc"] = "Efface les caches de l'Explorateur Windows et du Token Broker pour actualiser les éléments de l'interface système et les jetons.",
++                ["Options_MemDumps_Title"] = "Vidages mémoire",
++                ["Options_MemDumps_Desc"] = "Supprime les fichiers de vidage sur incident (minidumps et vidages noyau en direct) générés par les défaillances du système.",
++                ["Options_Prefetch_Title"] = "Données Prefetch",
++                ["Options_Prefetch_Desc"] = "Efface les données Prefetch. Windows les reconstruira avec le temps pour optimiser la vitesse de lancement des applications.",
++                ["Options_FontCache_Title"] = "Cache des polices",
++                ["Options_FontCache_Desc"] = "Réinitialise le cache des polices de Windows pour résoudre les problèmes de polices corrompues ou manquantes.",
++                ["Options_DownCache_Title"] = "Cache de Windows Update",
++                ["Options_DownCache_Desc"] = "Supprime les téléchargements Windows Update mis en cache, ce qui force un nouveau téléchargement si des mises à jour sont en attente.",
++                ["Options_OldWin_Title"] = "Ancienne installation de Windows",
++                ["Options_OldWin_Desc"] = "Supprime le dossier $Windows.~BT ou Windows.old. Cette action est irréversible et empêche toute restauration de la version précédente.",
++                ["Options_SysLogErr_Title"] = "Rapports d'erreurs et journaux ETL",
++                ["Options_SysLogErr_Desc"] = "Supprime les files d'attente de rapports d'erreurs Windows (WER), les caches d'URL Cryptnet et les journaux de diagnostic ETL.",
++
++                ["Tweaks_Services_Title"] = "Mettre les services en manuel",
++                ["Tweaks_Services_Desc"] = "Configure les services d'arrière-plan inutiles pour qu'ils démarrent manuellement, ce qui économise les ressources système.",
++                ["Tweaks_Telemetry_Title"] = "Désactiver la télémétrie",
++                ["Tweaks_Telemetry_Desc"] = "Désactive définitivement la télémétrie, le suivi et les scripts de collecte de données de Windows.",
++                ["Tweaks_Activity_Title"] = "Désactiver l'historique d'activité",
++                ["Tweaks_Activity_Desc"] = "Empêche Windows d'enregistrer et de synchroniser l'historique d'activité de l'utilisateur entre les appareils.",
++
++                ["Msg_ServicesSuccess"] = "Services définis en manuel avec succès.",
++                ["Msg_ServicesFail"] = "Échec de la configuration des services.",
++                ["Msg_TelemetrySuccess"] = "Télémétrie désactivée avec succès.",
++                ["Msg_TelemetryFail"] = "Échec de la désactivation de la télémétrie.",
++                ["Msg_ActivitySuccess"] = "Historique d'activité désactivé avec succès.",
++                ["Msg_ActivityFail"] = "Échec de la désactivation de l'historique d'activité."
+             }
+         };
+ 
+diff -ruN --strip-trailing-cr orig/PASPAS-master/Main.Designer.cs PASPAS-master/Main.Designer.cs
+--- orig/PASPAS-master/Main.Designer.cs	2026-07-16 10:15:20.000000000 +0000
++++ PASPAS-master/Main.Designer.cs	2026-10-21 09:27:40.519878795 +0000
+@@ -287,10 +287,11 @@
+             this.languageSelector.FormattingEnabled = true;
+             this.languageSelector.Items.AddRange(new object[] {
+             "English",
+-            "Türkçe"});
+-            this.languageSelector.Location = new System.Drawing.Point(700, 28);
++            "Türkçe",
++            "Français"});
++            this.languageSelector.Location = new System.Drawing.Point(680, 28);
+             this.languageSelector.Name = "languageSelector";
+-            this.languageSelector.Size = new System.Drawing.Size(75, 25);
++            this.languageSelector.Size = new System.Drawing.Size(95, 25);
+             this.languageSelector.TabIndex = 19;
+ 
+             // Main Form
+diff -ruN --strip-trailing-cr orig/PASPAS-master/Main.cs PASPAS-master/Main.cs
+--- orig/PASPAS-master/Main.cs	2026-07-16 10:15:20.000000000 +0000
++++ PASPAS-master/Main.cs	2026-10-21 09:27:40.519601854 +0000
+@@ -51,7 +51,7 @@
+         private void PASPAS_Main_Load(object sender, EventArgs e)
+         {
+             Language.Current = string.IsNullOrEmpty(Properties.Settings.Default.Language) ? "en" : Properties.Settings.Default.Language;
+-            languageSelector.SelectedIndex = Language.Current == "tr" ? 1 : 0;
++            languageSelector.SelectedIndex = Math.Max(0, Array.IndexOf(Language.Codes, Language.Current));
+ 
+             BuildAllPanels();
+             SignalUICoreEvents();
+@@ -123,7 +123,7 @@
+         {
+             languageSelector.SelectedIndexChanged += (s, e) =>
+             {
+-                string newLang = languageSelector.SelectedIndex == 1 ? "tr" : "en";
++                string newLang = Language.Codes[Math.Max(0, languageSelector.SelectedIndex)];
+                 if (newLang != Properties.Settings.Default.Language)
+                 {
+                     Properties.Settings.Default.Language = newLang;

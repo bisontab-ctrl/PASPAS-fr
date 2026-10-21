@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0-windows10.0.17763.0</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<UseWindowsForms>true</UseWindowsForms>
+		<SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+		<NeutralLanguage>en</NeutralLanguage>
+		<StartupObject>PASPAS.Program</StartupObject>
+		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+		<SatelliteResourceLanguages>en;tr</SatelliteResourceLanguages>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Version>2.0.1.1</Version>
+		<AssemblyVersion>2.0.1.1</AssemblyVersion>
+		<FileVersion>2.0.1.1</FileVersion>
+		<Copyright>Berkay Gediz © 2026</Copyright>
+		<Description>All-in-one system utility to clean temporary files, review registry entries, uninstall programs, and tweak Windows performance.</Description>
+		<Title>PASPAS</Title>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<ApplicationIcon>Assets\paspas.ico</ApplicationIcon>
+		<SignAssembly>False</SignAssembly>
+		<ErrorReport>none</ErrorReport>
+		<PackageIcon>paspas.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/berkaygediz/PASPAS</RepositoryUrl>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="Assets\paspas.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Update="Assets\paspas.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Update="Properties\app.manifest">
+			<SubType>Designer</SubType>
+		</None>
+		<None Update="Properties\Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+</Project>
